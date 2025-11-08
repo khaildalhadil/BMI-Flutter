@@ -1,3 +1,4 @@
+import 'package:bmi/constants.dart';
 import 'package:flutter/material.dart';
 
 class ColumnContent extends StatelessWidget {
@@ -12,7 +13,7 @@ class ColumnContent extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         icon,
-        Text(text, style: TextStyle(fontSize: 26, color: Colors.white70)),
+        Text(text, style: textStyle),
       ],
     );
   }
