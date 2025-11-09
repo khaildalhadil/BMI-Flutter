@@ -1,6 +1,7 @@
 import 'package:bmi/column_content.dart';
 import 'package:bmi/constants.dart';
 import 'package:bmi/reusabie_card.dart';
+import 'package:bmi/result_page.dart';
 import 'package:flutter/material.dart';
 
 // enum ActiveName { Male, FEMALE }
@@ -179,7 +180,22 @@ class _InputPageState extends State<InputPage> {
             padding: EdgeInsets.all(17.0),
             margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
             child: Center(
-              child: Text(" BMI أحسب", style: TextStyle(fontSize: 26)),
+              child: TextButton(
+                child: Text(
+                  " BMI أحسب",
+                  style: TextStyle(fontSize: 26, color: Colors.white),
+                ),
+                onPressed: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Screen1();
+                      },
+                    ),
+                  ),
+                },
+              ),
             ),
           ),
         ],
