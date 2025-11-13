@@ -2,7 +2,8 @@ import 'package:bmi/constants.dart';
 import 'package:flutter/material.dart';
 
 class Screen1 extends StatelessWidget {
-  const Screen1({super.key});
+  Screen1(this.result);
+  String result;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,7 @@ class Screen1 extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "19.2",
+                    result.toString(),
                     style: TextStyle(
                       fontSize: 100,
                       fontWeight: FontWeight.bold,

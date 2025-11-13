@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:bmi/column_content.dart';
 import 'package:bmi/constants.dart';
 import 'package:bmi/reusabie_card.dart';
 import 'package:bmi/result_page.dart';
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 // enum ActiveName { Male, FEMALE }
 
@@ -186,14 +189,28 @@ class _InputPageState extends State<InputPage> {
                   style: TextStyle(fontSize: 26, color: Colors.white),
                 ),
                 onPressed: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Screen1();
-                      },
-                    ),
-                  ),
+                  if (this.cureentAcitve == "")
+                    {
+                      Alert(
+                        context: context,
+                        title: "Please Choose The Gender.",
+                        style: AlertStyle(
+                          titleStyle: TextStyle(color: Colors.white),
+                        ),
+                      ).show(),
+                    }
+                  else
+                    {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            String num = calcultTheResult();
+                            return Screen1(num);
+                          },
+                        ),
+                      ),
+                    },
                 },
               ),
             ),
@@ -201,6 +218,11 @@ class _InputPageState extends State<InputPage> {
         ],
       ),
     );
+  }
+
+  String calcultTheResult() {
+    double bmi = weight / pow(height / 100, 2);
+    return bmi.toStringAsFixed(2);
   }
 
   void changeActiveName(String name) {
